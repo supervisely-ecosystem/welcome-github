@@ -7,7 +7,12 @@ from supervisely.fastapi_helpers import StateJson, DataJson, LastStateJson, Cont
 
 # init state and data (singletons)
 LastStateJson({})
-DataJson({"name": "<empty>"})
+DataJson(
+    {
+        "name": "<empty>",
+        "activeStep": 1,
+    }
+)
 
 app = FastAPI()
 sly_app = get_subapp()
