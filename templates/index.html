@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <script src="https://unpkg.com/vue"></script>
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.7/theme-chalk/index.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.7/index.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fast-json-patch@3.1.0/dist/fast-json-patch.min.js"></script>
-    <script src="https://supervisely-ecosystem.github.io/supervisely-app-frontend-js/SlyApp.js"></script>
     <link
       rel="stylesheet"
       href="https://supervise.ly/apps-designer.bundle.css"
     />
     <script src="https://supervise.ly/apps-designer.bundle.js"></script>
-
+    <script>window.Vue = sly.Vue;</script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.7/index.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/fast-json-patch@3.1.0/dist/fast-json-patch.min.js"></script>
+    <script src="https://supervisely-ecosystem.github.io/supervisely-app-frontend-js/SlyApp.js"></script>
+    
     <div id="sly-app">
       <sly-app :url="document.location.href">
         <template v-slot="{ post, state, data }">
-          <sly-stepper :active="state.step">
+          <sly-stepper :active="data.step">
             <sly-stepper-item name="First step">
               <div>1</div>
             </sly-stepper-item>
