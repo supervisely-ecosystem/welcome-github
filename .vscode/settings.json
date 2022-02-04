@@ -1,0 +1,16 @@
+{
+    "python.pythonPath": "venv/bin/python",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/__pycache__*": true,
+        "**/venv": true,
+        "**/supervisely/[abcdeghijklmnopqrstuvwxyz_R]*": true,
+        "**/supervisely/f[bcdeghijklmnopqrstuvwxyz_]*": true,
+    },
+    "explorerExclude.backup": null
+}
