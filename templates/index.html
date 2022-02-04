@@ -1,39 +1,52 @@
 <!DOCTYPE html>
 <html>
-<body>
+  <body>
+    <script src="https://unpkg.com/vue"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.7/theme-chalk/index.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.7/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fast-json-patch@3.1.0/dist/fast-json-patch.min.js"></script>
+    <script src="https://supervisely-ecosystem.github.io/supervisely-app-frontend-js/SlyApp.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://supervise.ly/apps-designer.bundle.css"
+    />
+    <script src="https://supervise.ly/apps-designer.bundle.js"></script>
 
-<script src="https://unpkg.com/vue"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.7/theme-chalk/index.min.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.15.7/index.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fast-json-patch@3.1.0/dist/fast-json-patch.min.js"></script>
-<script src="https://supervisely-ecosystem.github.io/supervisely-app-frontend-js/SlyApp.js"></script>
-<link rel="stylesheet" href="https://supervise.ly/apps-designer.bundle.css" />
-<script src="https://supervise.ly/apps-designer.bundle.js"></script>
-
-
-<div id="sly-app">
-    <sly-app :url="document.location.href">
+    <div id="sly-app">
+      <sly-app :url="document.location.href">
         <template v-slot="{ post, state, data }">
-            <sly-stepper :active="state.activeStep">
-                <sly-stepper-item name="First step">
-                    <div>1</div>
-                </sly-stepper-item>
-                <sly-stepper-item name="Second step">
-                    <div>2</div>
-                </sly-stepper-item>
-            </sly-stepper>
-
-
-
-            <div>Hello random user: {{ data.name }}</div>
-            <el-button type="primary" @click="post('/generate')">Say hello</el-button>
+          <sly-stepper :active="state.step">
+            <sly-stepper-item name="First step">
+              <div>1</div>
+            </sly-stepper-item>
+            <sly-stepper-item name="Second step">
+              <div>2</div>
+            </sly-stepper-item>
+          </sly-stepper>
+          
+          <pre>{{data.examples}}</pre>
+          <el-select v-model="state.example">
+            <el-option
+              v-for="item in data.examples"
+              :key="item.github"
+              :label="item.name"
+              :value="item.github"
+            >
+            </el-option>
+          </el-select>
+          <div>Hello random user: {{ data.name }}</div>
+          <el-button type="primary" @click="post('/generate')"
+            >Say hello</el-button
+          >
         </template>
-    </sly-app>
-</div>
+      </sly-app>
+    </div>
 
-<script>
-    slyApp.init();
-</script>
-
-</body>
+    <script>
+      slyApp.init();
+    </script>
+  </body>
 </html>

@@ -6,13 +6,22 @@ from supervisely.fastapi_helpers import get_subapp, Jinja2Templates
 from supervisely.fastapi_helpers import StateJson, DataJson, LastStateJson, ContextJson
 
 # init state and data (singletons)
-LastStateJson({})
+
+github_examples = [
+    {"name": "hello-user", "github": "https://github.com/supervisely-ecosystem/example-hello-user"},
+]
+
 DataJson(
     {
         "name": "<empty>",
-        "activeStep": 1,
+        "step": 1,
+        "examples": github_examples
     }
 )
+
+LastStateJson({
+    "example": github_examples[0]["github"]
+})
 
 app = FastAPI()
 sly_app = get_subapp()
